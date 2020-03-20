@@ -52,11 +52,15 @@ function request()
     finally
     {
         let date = Date.now();
-        console.log(`Requsições realizdas, hórario: ${date}`);
+        console.log(`Requsições realizdas, hórario: ${new Date(Date.now()).toLocaleString()}`);
     }
 }
 
 cron.schedule("0 7 * * 1,2,3,4,5,6 *", () =>{request();});
+
+cron.schedule("* * * * * *", () =>{console.log("App funcionando: " + new Date(Date.now()).toLocaleString());
+});
+
 
 
 
