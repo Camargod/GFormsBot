@@ -60,7 +60,7 @@ cron.schedule("0 0 7 * * 1,2,3,4,5,6", () =>{request();},{timezone:"America/Sao_
 
 cron.schedule("* * * * * *", () =>{console.log("App funcionando: " + new Date(Date.now()).toLocaleString())},{timezone:"America/Sao_Paulo"});
 
-cron.schedule("0 40 15 * * *", () =>{console.log("App Com timezone certo: " + new Date(Date.now()).toLocaleString())},{timezone:"America/Sao_Paulo"});
+// cron.schedule("0 40 15 * * *", () =>{console.log("App Com timezone certo: " + new Date(Date.now()).toLocaleString())},{timezone:"America/Sao_Paulo"});
 
 
 
