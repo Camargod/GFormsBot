@@ -4,6 +4,9 @@
   "description": "Script de automação para Google Forms",
   "main": "index.js",
   "author": "Gabriel Silva de Camargo",
+  "scripts": {
+    "start": "node index.js"
+  },
   "license": "MIT",
   "dependencies": {
     "axios": "^0.19.2",
