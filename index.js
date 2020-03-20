@@ -58,7 +58,9 @@ function request()
 
 cron.schedule("0 7 * * 1,2,3,4,5,6 *", () =>{request();},{timezone:"America/Sao_Paulo"});
 
-cron.schedule("* * * * * *", () =>{console.log("App funcionando: " + new Date(Date.now()).toLocaleString())},{timezone:"America/Sao_Paulo"});
+cron.schedule("* * * * * *", () =>{console.log("App funcionando: " + new Date(Date.now()).toUTCString())},{timezone:"America/Sao_Paulo"});
+
+cron.schedule("58 11 * * * *", () =>{console.log("App Com timezone certo: " + new Date(Date.now()).toLocaleString())},{timezone:"America/Sao_Paulo"});
 
 
 
