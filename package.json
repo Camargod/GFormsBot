@@ -1,0 +1,14 @@
+{
+  "name": "GFormsBot",
+  "version": "1.0.0",
+  "description": "Script de automação para Google Forms",
+  "main": "index.js",
+  "author": "Gabriel Silva de Camargo",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "form-data": "^3.0.0",
+    "fs": "^0.0.1-security",
+    "node-cron": "^2.0.3"
+  }
+}

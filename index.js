@@ -1,0 +1,62 @@
+const FormData = require('form-data');
+const cron = require("node-cron");
+
+let formdatabody = 
+[
+    {
+        "entry.380784503":"SIM",
+        "entry.348251266":"30",
+        "entry.1198114269":"Camargo"
+    },
+    {
+        "entry.380784503":"SIM",
+        "entry.348251266":"17",
+        "entry.1198114269":"Felipe"
+    }
+];
+
+// let formdatabody = 
+// [
+//     {
+//         "entry.2083108767": "a",
+//         "entry.2005620554": "aaaaaaaaaaaaaaaaa",
+//         "entry.1045781291": 302
+//     }
+// ]
+
+let formdataArray = [];
+
+function request()
+{
+    try
+    {
+        for (let index = 0; index < formdatabody.length; index++) 
+        {
+            let keyval = Object.entries(formdatabody[index]).map(([key,value])=> ({key,value}));
+            formdataArray[index] = new FormData();
+            keyval.map(e=>
+            {
+                formdataArray[index].append(e.key,e.value);
+            });
+            formdataArray[index].submit("https://docs.google.com/forms/u/0/d/e/1FAIpQLSeG4lo0PuSQp5Zu6sav5Mhlr26_EIj12kDNiOPt6yeAtBPXZg/formResponse",(err, res)=>
+            {
+                if (err) console.log(err);
+                res.resume();
+            });
+        }
+    }
+    catch(err)
+    {
+        console.log("ERRO:" + err);
+    }
+    finally
+    {
+        let date = Date.now();
+        console.log(`Requsições realizdas, hórario: ${date}`);
+    }
+}
+
+cron.schedule("0 7 * * 1,2,3,4,5,6 *", () =>{request();});
+
+
+
