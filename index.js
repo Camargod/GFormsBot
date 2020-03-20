@@ -62,7 +62,7 @@ cron.schedule("* * * * * *", () =>{console.log("App funcionando: " + new Date(Da
 
 // cron.schedule("0 40 15 * * *", () =>{console.log("App Com timezone certo: " + new Date(Date.now()).toLocaleString())},{timezone:"America/Sao_Paulo"});
 
-let app = express.application;
+let app = express();
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT,()=>
