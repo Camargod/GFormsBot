@@ -52,7 +52,7 @@ function request()
     finally
     {
         let date = Date.now();
-        console.log(`Requsições realizdas, hórario: ${new Date(Date.now()).toLocaleString()}`);
+        console.log(`Requsições realizadas, hórario: ${new Date(Date.now()).toLocaleString()}`);
     }
 }
 
