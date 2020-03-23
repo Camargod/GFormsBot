@@ -10,9 +10,10 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.19.2",
+    "express": "*",
     "form-data": "^3.0.0",
     "fs": "^0.0.1-security",
-    "node-cron": "^2.0.3",
-    "express":"*"
+    "newrelic": "^6.5.0",
+    "node-cron": "^2.0.3"
   }
 }

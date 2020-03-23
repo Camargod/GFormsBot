@@ -1,3 +1,4 @@
+require('newrelic');
 const FormData = require('form-data');
 const cron = require("node-cron");
 const express = require('express');
@@ -15,14 +16,6 @@ let formdatabody =
     }
 ];
 
-// let formdatabody = 
-// [
-//     {
-//         "entry.2083108767": "a",
-//         "entry.2005620554": "aaaaaaaaaaaaaaaaa",
-//         "entry.1045781291": 302
-//     }
-// ]
 
 let formdataArray = [];
 
@@ -51,7 +44,6 @@ function request()
     }
     finally
     {
-        let date = Date.now();
         console.log(`Requsições realizadas, hórario: ${new Date(Date.now()).toLocaleString()}`);
     }
 }
