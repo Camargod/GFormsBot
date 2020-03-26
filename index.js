@@ -2,6 +2,7 @@ require('newrelic');
 const FormData = require('form-data');
 const cron = require("node-cron");
 const express = require('express');
+
 let formdatabody = 
 [
     {
@@ -16,8 +17,10 @@ let formdatabody =
     }
 ];
 
+// Eu não vou correr o risco de sair de casa, já que estou de quarentena em tudo, para ter a pequena possibilidade de me contaminar e transmitir a minha familia, perdendo todo o sentido de os mesmos estarem em quarentena. Estamos em estado de calamidade publica e estou seguindo as recomendações de ficar em casa.
 
 let formdataArray = [];
+let time = 0;
 
 function request()
 {
@@ -25,17 +28,21 @@ function request()
     {
         for (let index = 0; index < formdatabody.length; index++) 
         {
+            requestWithDelay();
             let keyval = Object.entries(formdatabody[index]).map(([key,value])=> ({key,value}));
             formdataArray[index] = new FormData();
             keyval.map(e=>
             {
                 formdataArray[index].append(e.key,e.value);
             });
-            formdataArray[index].submit("https://docs.google.com/forms/u/0/d/e/1FAIpQLSeG4lo0PuSQp5Zu6sav5Mhlr26_EIj12kDNiOPt6yeAtBPXZg/formResponse",(err, res)=>
+           
+            setTimeout(formdataArray[index].submit("https://docs.google.com/forms/u/0/d/e/1FAIpQLSeG4lo0PuSQp5Zu6sav5Mhlr26_EIj12kDNiOPt6yeAtBPXZg/formResponse",(err, res)=>
             {
                 if (err) console.log(err);
+                console.log(`Requisição do ${formdatabody[index]["entry.1198114269"]} feita.`);
                 res.resume();
-            });
+                requestWithDelay();
+            }),time);
         }
     }
     catch(err)
@@ -46,6 +53,11 @@ function request()
     {
         console.log(`Requsições realizadas, hórario: ${new Date(Date.now()).toLocaleString()}`);
     }
+}
+
+function requestWithDelay()
+{
+    time = Math.random() * 1000000;
 }
 
 cron.schedule("0 0 7 * * 1,2,3,4,5,6", () =>{request();},{timezone:"America/Sao_Paulo"});
