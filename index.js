@@ -17,7 +17,6 @@ let formdatabody =
     }
 ];
 
-// Eu não vou correr o risco de sair de casa, já que estou de quarentena em tudo, para ter a pequena possibilidade de me contaminar e transmitir a minha familia, perdendo todo o sentido de os mesmos estarem em quarentena. Estamos em estado de calamidade publica e estou seguindo as recomendações de ficar em casa.
 
 let formdataArray = [];
 let time = 0;
